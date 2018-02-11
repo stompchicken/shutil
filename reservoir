@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+import sys
+import random
+import argparse
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description='Randomly sample from a stream')
+    parser.add_argument('-s', '--sample',  help='Sample size', type=int, default=10)
+    args = parser.parse_args()
+
+    reservoir = []
+    n = args.sample
+
+    for i, line in enumerate(sys.stdin):
+        line = line.strip()
+
+        if i < n:
+            reservoir.append(line)
+        else:
+            s = random.randint(0, i)
+            if s < n:
+                reservoir[s] = line
+
+
+    for x in reservoir:
+        print(x)

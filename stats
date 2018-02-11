@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+import sys
+import statistics
+
+if __name__ == '__main__':
+    data = []
+    for line in sys.stdin:
+        line = line.strip()
+        data.append(float(line))
+
+    print('n=%d, mean=%f, min=%f, max=%f, median=%f' % (len(data), statistics.mean(data), min(data), max(data), statistics.median(data)))

@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+import sys
+import argparse
+import collections
+
+if __name__ == '__main__':
+    counter = collections.Counter()
+    for line in sys.stdin:
+        line = line.strip()
+        counter[line] += 1
+    print(counter)
